@@ -30,26 +30,12 @@ class ClientResource extends JsonResource
             'id'                      => $clientEntity->getId(),
             'code'                    => $clientEntity->getCode(),
             'name'                    => $clientEntity->getName(),
-            'baseId'                  => $clientEntity->getBaseId(),
-            'base'                    => $this->when($request->input('_embed:base') === 'true', new BaseWithoutHotelsResource(
-                $clientEntity->getBase()
-            )),
-            'hotelId'                 => $clientEntity->getHotelId(),
-            'hotel'                   => $this->when($request->input('_embed:hotel') === 'true', new HotelWithoutBaseResource(
-                $clientEntity->getHotel()
-            )),
-            'startDate'               => $clientEntity->getStartDate()->format('Y-m-d'),
-            'finalDate'               => $clientEntity->getFinalDate()->format('Y-m-d'),
-            'isCommissionable'        => $clientEntity->getIsCommissionable(),
-            'category'                => $clientEntity->getCategory(),
-            'marketCode'              => $clientEntity->getMarketCode(),
-            'extraNights'             => $clientEntity->getExtraNights(),
-            'profitabilityIndicator'  => $clientEntity->getProfitabilityIndicator(),
-            'quantityIndicator'       => $clientEntity->getQuantityIndicator(),
-            'restriction'             => $clientEntity->getRestriction(),
-            'settingIndicator'        => $clientEntity->getSettingIndicator(),
-            'adjustmentAmount'        => $clientEntity->getAdjustmentAmount(),
-            'adjustmentPercentage'    => $clientEntity->getAdjustmentPercentage(),
+            'lastName'                => $clientEntity->getLastName(),
+            'dateOfBirth'             => $clientEntity->getDateOfBirth(),
+            'phone'                   => $clientEntity->getPhone(),
+            'email'                   => $clientEntity->getEmail(),
+            'city'                    => $clientEntity->getCity(),
+            'country'                 => $clientEntity->getCountry(),
             'status'                  => $clientEntity->getStatus(),
             'createdAt'               => $clientEntity->getCreatedAt()->format('Y-m-d H:i:s'),
             'updatedAt'               => $clientEntity->getUpdatedAt()->format('Y-m-d H:i:s')

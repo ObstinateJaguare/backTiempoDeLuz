@@ -25,8 +25,8 @@ trait ClientEntityGetAttributeData
     }
 
     /**
-     * En:Get plan code
-     * Es:Obtener el código del plan
+     * En:Get client code
+     * Es:Obtener el código del cliente
      *
      * @return string
      */
@@ -36,8 +36,8 @@ trait ClientEntityGetAttributeData
     }
 
     /**
-     * En:Get plan name
-     * Es:Obtener el nombre del plan
+     * En:Get client name
+     * Es:Obtener el nombre del cliente
      *
      * @return string
      */
@@ -47,206 +47,74 @@ trait ClientEntityGetAttributeData
     }
 
     /**
-     * En:Get the basis of the plan
-     * Es:Obtener la base del plan
-     *
-     * @return HasOne
-     */
-    public function base(): HasOne
-    {
-        return $this->hasOne(Base::class, 'bas_cod', 'base_id');
-    }
-
-    /**
-     * En:Get the basis of the plan
-     * Es:Obtener la base del plan
-     *
-     * @return HasOne
-     */
-    public function getBase()
-    {
-        return $this->base;
-    }
-
-    /**
-     * En:Get the base id of the plan
-     * Es:Obtener el id de la base del plan
+     * En:Get lastname client
+     * Es:Obtener apellidos del cliente
      *
      * @return string
      */
-    public function getBaseId(): string
+    public function getLastName(): string
     {
-        return $this->getAttribute('base_id');
+        return $this->getAttribute('lastName');
     }
 
     /**
-     * En:Get hotel plan
-     * Es:Obtener hotel del plan
+     * En:Get Date Of Birth
+     * Es:Obtener fecha de nacimiento
      *
-     * @return HasOne
+     * @return carbon
      */
-    public function hotel(): HasOne
+    public function getDateOfBirth(): carbon
     {
-        return $this->hasOne(Hotel::class, 'establ_cod', 'hotel_id');
+        return $this->getAttribute('dateOfBirth');
     }
 
     /**
-     * En:Get hotel plan
-     * Es:Obtener hotel del plan
-     *
-     * @return HasOne
-     */
-    public function getHotel()
-    {
-        return $this->hotel;
-    }
-
-    /**
-     * En:Get the hotel id of the plan
-     * Es:Obtener el id del hotel del plan
+     * En:Get client phone
+     * Es:Obtener telefono del cliente
      *
      * @return string
      */
-    public function getHotelId(): string
+    public function getPhone(): string
     {
-        return $this->getAttribute('hotel_id');
+        return $this->getAttribute('phone');
     }
 
     /**
-     * En:Get plan start date
-     * Es:Obtener fecha de inicio del plan
-     *
-     * @return Carbon
-     */
-    public function getStartDate(): Carbon
-    {
-        return Carbon::parse($this->getAttribute('start_date'));
-    }
-
-    /**
-     * En:Get plan end date
-     * Es:Obtener fecha final del plan
-     *
-     * @return Carbon
-     */
-    public function getFinalDate(): Carbon
-    {
-        return Carbon::parse($this->getAttribute('final_date'));
-    }
-
-    /**
-     * En:Get if the plan is commissionable
-     * Es:Obtener si es comisionable el plan
+     * En:Get client email
+     * Es:Obtener email del cliente
      *
      * @return string
      */
-    public function getIsCommissionable(): string
+    public function getEmail(): string
     {
-        return $this->getAttribute('is_commissionable');
+        return $this->getAttribute('email');
     }
 
     /**
-     * En:Get plan category
-     * Es:Obtener categoria del plan
+     * En:Get client city
+     * Es:Obtener ciudad del cliente
      *
      * @return string
      */
-    public function getCategory(): string
+    public function getCity(): string
     {
-        return $this->getAttribute('category');
+        return $this->getAttribute('city');
     }
 
     /**
-     * En:Get extra plan nights
-     * Es:Obtener noches extras del plan
+     * En:Get clientr country
+     * Es:Obtener el pais del cliente
      *
      * @return string
      */
-    public function getMarketCode(): string
+    public function getCountry(): string
     {
-        return $this->getAttribute('market_code');
+        return $this->getAttribute('country');
     }
 
     /**
-     * En:Get extra plan nights
-     * Es:Obtener noches extras del plan
-     *
-     * @return string
-     */
-    public function getExtraNights(): string
-    {
-        return $this->getAttribute('extra_nights');
-    }
-
-    /**
-     * En:Get plan profitability indicator
-     * Es:Obtener indicador de rentabilidad del plan
-     *
-     * @return string
-     */
-    public function getProfitabilityIndicator(): string
-    {
-        return $this->getAttribute('profitability_indicator');
-    }
-
-    /**
-     * En:Get Quantity Indicator of the plan
-     * Es:Obtener indicador de cantidad del plan
-     *
-     * @return string
-     */
-    public function getQuantityIndicator(): string
-    {
-        return $this->getAttribute('quantity_indicator') ?? '';
-    }
-
-    /**
-     * En:Get plan restriction
-     * Es:Obtener restrincion del plan
-     *
-     * @return string
-     */
-    public function getRestriction(): string
-    {
-        return $this->getAttribute('restriction');
-    }
-
-    /**
-     * En:Get plan configuration indicator
-     * Es:Obtener indicador de configuración del plan
-     *
-     * @return string
-     */
-    public function getSettingIndicator(): string
-    {
-        return $this->getAttribute('setting_indicator');
-    }
-
-    /**
-     * En:Get plan adjustment amount
-     * Es:Obtener la cantidad de ajuste del plan
-     *
-     * @return string
-     */
-    public function getAdjustmentAmount(): string
-    {
-        return $this->getAttribute('adjustment_amount');
-    }
-
-    /**
-     * En:Get fit percentage
-     * Es:Obtener porcentaje de forma
-     *
-     * @return string
-     */
-    public function getAdjustmentPercentage(): string
-    {
-        return $this->getAttribute('adjustment_percentage');
-    }
-
-    /**
-     * En:Get plan status
-     * Es:Obtener el estado del plan
+     * En:Get client status
+     * Es:Obtener el estado del cliente
      *
      * @return bool
      */
@@ -256,24 +124,24 @@ trait ClientEntityGetAttributeData
     }
 
     /**
-     * En: Get plan creation date.
-     * Es: Obtener fecha de creación de plan.
+     * En: Get client creation date.
+     * Es: Obtener fecha de creación del cliente.
      *
      * @return Carbon
      */
     public function getCreatedAt(): Carbon
     {
-        return $this->getAttribute('created_at');
+        return $this->getAttribute('createdAt');
     }
 
     /**
-     * En: Get plan update date.
-     * Es: Obtener fecha de actualización de plan.
+     * En: Get client update date.
+     * Es: Obtener fecha de actualización del cliente.
      *
      * @return Carbon
      */
     public function getUpdatedAt(): Carbon
     {
-        return $this->getAttribute('updated_at');
+        return $this->getAttribute('updatedAt');
     }
 }

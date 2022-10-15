@@ -2,19 +2,30 @@
 
 namespace Modules\Client\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Client\Transformers\ClientResource;
+use Modules\Client\Contracts\ClientEntityRepository;
 
 class ClientController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * @return Renderable
+     * En: Display a listing of the resource.
+     * Es: Mostrar una lista del recurso.
+     *
+     * @param  Request $request
+     * @param  ClientEntityRepository $clientEntityRepository
+     * @return AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request, ClientEntityRepository $clientEntityRepository)
     {
-        return view('client::index');
+        return ClientResource::collection(
+            $clientEntityRepository->filter(
+                $request->all()
+            )
+        );
     }
 
     /**
